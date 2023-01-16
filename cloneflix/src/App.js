@@ -20,9 +20,7 @@ function App() {
             .then((res) => res.json())
             .then((res) => dispatch(setMoviesGenres({ genre: res.genres })));
 
-        fetch(
-            "https://api.themoviedb.org/3/search/movie?api_key=d447506c6ccd7a520d5dc70bf8bf7614&language=fr&query=Jack+Reacher"
-        )
+        fetch("https://api.themoviedb.org/3/genre/tv/list?api_key=d447506c6ccd7a520d5dc70bf8bf7614&language=fr")
             .then((res) => res.json())
             .then((res) => dispatch(setSeriesGenres({ genre: res.genres })));
     }, []);
