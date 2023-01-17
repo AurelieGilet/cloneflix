@@ -1,22 +1,29 @@
 import cloneFlixLogo from "../assets/cloneflix-logo.png";
-import { useSelector } from "react-redux";
+import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
-    const topRated = useSelector((state) => state.API.moviesGenres);
-    console.log(topRated);
-
     return (
-        <nav className="flex justify-between px-6 flex-row items-center">
-            <ul className="grid grid-flow-col gap-8 md:ml-5 mr-auto auto-rows-auto ">
-                <li>
-                    <img className="w-24" src={cloneFlixLogo} alt="Logo Cloneflix" />
-                </li>
-                <li>Accueil</li>
-                <li>Séries</li>
-                <li>Films</li>
-                <li>Ma liste</li>
-            </ul>
-        </nav>
+        <header className="sticky top-0 bg-black text-white py-4 opacity-90 z-10">
+            <nav className="flex justify-between px-6 flex-row items-center">
+                <ul className="grid grid-flow-col gap-8 md:ml-5 mr-auto auto-rows-auto ">
+                    <li>
+                        <NavLink to={"/"}>
+                            <img className="w-24" src={cloneFlixLogo} alt="Logo Cloneflix" />
+                        </NavLink>
+                    </li>
+                    <li>
+                        <NavLink to={"/"}>Accueil</NavLink>
+                    </li>
+                    <li>
+                        <NavLink to={"/series"}>Séries</NavLink>
+                    </li>
+                    <li>
+                        <NavLink to={"/films"}>Films</NavLink>
+                    </li>
+                    <li>Ma liste</li>
+                </ul>
+            </nav>
+        </header>
     );
 };
 
