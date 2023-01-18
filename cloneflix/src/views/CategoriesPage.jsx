@@ -8,7 +8,7 @@ const CategoriesPage = () => {
     return (
         <>
             <Header type={params.type} />
-            <PageContent type={params.type} />
+            <PageContent type={params.type} genreParam={params.genre} />
         </>
     );
 };

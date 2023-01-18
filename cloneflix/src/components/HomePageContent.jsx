@@ -7,13 +7,16 @@ const HomePageContent = () => {
     const moviesTopRated = useSelector((state) => state.API.moviesTopRated);
     const seriesTopRated = useSelector((state) => state.API.seriesTopRated);
     const moviesUpcoming = useSelector((state) => state.API.moviesUpcoming);
+    const element = useSelector((state) => state.Modal.element);
+
+    element ? (document.body.style.overflow = "hidden") : (document.body.style.overflow = "visible");
 
     return (
         <section>
-            {moviesUpcoming[0] && <Selection movies={moviesUpcoming} />}
-            {/* {moviesUpcoming[0] && <Modal element={moviesUpcoming[0]} />} */}
-            <Carousel list={moviesTopRated} title={"Films les mieux notés"} />
-            <Carousel list={seriesTopRated} title={"Séries les mieux notées"} />
+            {element && <Modal element={element} />}
+            {moviesUpcoming[0] && <Selection type={"films"} movies={moviesUpcoming} />}
+            <Carousel list={moviesTopRated} type={"films"} title={"Films les mieux notés"} />
+            <Carousel list={seriesTopRated} type={"series"} title={"Séries les mieux notées"} />
         </section>
     );
 };
