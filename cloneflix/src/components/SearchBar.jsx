@@ -5,13 +5,26 @@ import { useDispatch } from "react-redux";
 
 const SearchBar = () => {
     const [search, setSearch] = useState("");
+    const [isFirstSearch, setIsFirstSearch] = useState(true);
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
     const handleChange = (e) => {
+        if (e.target.value === "") {
+            setSearch(e.target.value.trim());
+            setIsFirstSearch(true);
+            navigate(-1);
+            return;
+        }
+
+        if (isFirstSearch) {
+            navigate("/search");
+            setIsFirstSearch(false);
+        }
+
         dispatch(emptySearchBar());
-        navigate("/search");
+
         setSearch(e.target.value);
         fetch(
             "https://api.themoviedb.org/3/search/movie?api_key=d447506c6ccd7a520d5dc70bf8bf7614&language=fr-fr&query=" +

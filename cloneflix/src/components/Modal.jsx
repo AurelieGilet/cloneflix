@@ -35,20 +35,19 @@ const Modal = ({ element }) => {
         }
     };
 
-    let image = element.backdrop_path
-        ? `https://image.tmdb.org/t/p/w1280${element.backdrop_path} `
-        : defaultImg;
-
     let elementGenresIds = element.genre_ids;
     let elementGenres = [];
+    console.log(type);
 
     switch (type) {
         case "films":
+        case "movie":
             for (const genresId of elementGenresIds) {
                 elementGenres.push(moviesGenres.filter((genre) => genre.id === genresId));
             }
             break;
         case "series":
+        case "tv":
             for (const genresId of elementGenresIds) {
                 elementGenres.push(seriesGenres.filter((genre) => genre.id === genresId));
             }
@@ -90,9 +89,7 @@ const Modal = ({ element }) => {
         <>
             <div
                 className="fixed top-0 left-0 w-screen h-screen right-0 z-30 bg-black bg-opacity-80"
-                onClick={() =>
-                    dispatch(setModalElement({ element: null, type: null, isOpen: false }))
-                }
+                onClick={() => dispatch(setModalElement({ element: null, type: null, isOpen: false }))}
             ></div>
 
             <div className="bg-[#141414] w-3/5 -translate-y-2/4 translate-x-2/4 fixed top-2/4 right-2/4 z-50">
@@ -114,7 +111,6 @@ const Modal = ({ element }) => {
                     <img className="rounded-md" src={image} alt={element.title || element.name} />
                 )}
 
-
                 <div className="text-white p-5 pb-0">
                     <div className="flex justify-between">
                         <h2 className="text-2xl">{element.title || element.name}</h2>
@@ -124,9 +120,7 @@ const Modal = ({ element }) => {
                     </div>
                     <p className="my-2">
                         Date de sortie :{" "}
-                        {element.release_date
-                            ? formatDate(element.release_date)
-                            : formatDate(element.first_air_date)}
+                        {element.release_date ? formatDate(element.release_date) : formatDate(element.first_air_date)}
                     </p>
                     <p className="my-2">{element.overview}</p>
                     <div className="flex flex-wrap my-2">
@@ -136,16 +130,12 @@ const Modal = ({ element }) => {
                                 {genre[0].name}
                             </span>
                         ))}
-                        <button onClick={handleClick}>{favToggle ? "Supprimer" : "Ajouter"} à mes favoris</button>
-                    </div>
-                  
-
+                    </div>{" "}
+                    <button onClick={handleClick}>{favToggle ? "Supprimer" : "Ajouter"} à mes favoris</button>
                 </div>
                 <div
                     className="inline-block float-right p-5 text-white font-large text-xl leading-none uppercase cursor-pointer rounded"
-                    onClick={() =>
-                        dispatch(setModalElement({ element: null, type: null, isOpen: false }))
-                    }
+                    onClick={() => dispatch(setModalElement({ element: null, type: null, isOpen: false }))}
                 >
                     X
                 </div>
