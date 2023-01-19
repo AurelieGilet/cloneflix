@@ -17,7 +17,7 @@ const Header = ({ type }) => {
             break;
     }
     return (
-        <header className="flex items-center mb-4 sticky top-14 p-4 z-20 bg-[#141414]">
+        <header className="flex items-center mb-4 sticky top-[3.75rem] p-4 z-20 bg-[#141414]">
             <h1 className="text-white uppercase mr-6 text-5xl">{type}</h1>
 
             <DropDown list={list} type={type} />

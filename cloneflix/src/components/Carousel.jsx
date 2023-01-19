@@ -12,20 +12,22 @@ const Carousel = ({ list, title, type }) => {
         dots: false,
         infinite: true,
         speed: 500,
-        slidesToShow: 4,
+        adaptiveHeight: true,
         slidesToScroll: 3,
     };
 
     return (
         <div>
             <h2 className="text-4xl font-bold text-white">{title}</h2>
-            <Slider {...settings}>
-                {list.map((element) => (
-                    <Suspense key={element.id} fallback={<FallbackCard />}>
-                        <Card element={element} type={type} key={element.id} />
-                    </Suspense>
-                ))}
-            </Slider>
+            {list.length && (
+                <Slider slidesToShow={list.length < 4 ? list.length : 4} {...settings}>
+                    {list.map((element) => (
+                        <Suspense key={element.id} fallback={<FallbackCard />}>
+                            <Card element={element} type={type} key={element.id} />
+                        </Suspense>
+                    ))}
+                </Slider>
+            )}
         </div>
     );
 };

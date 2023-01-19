@@ -1,5 +1,6 @@
 import cloneFlixLogo from "../assets/cloneflix-logo.png";
 import { NavLink } from "react-router-dom";
+import SearchBar from "./SearchBar";
 
 const Navbar = () => {
     return (
@@ -20,8 +21,11 @@ const Navbar = () => {
                     <li>
                         <NavLink to={"/films"}>Films</NavLink>
                     </li>
-                    <li>Ma liste</li>
+                    <li>
+                        <NavLink to={"/favoris"}>Ma liste</NavLink>
+                    </li>
                 </ul>
+                <SearchBar />
             </nav>
         </header>
     );

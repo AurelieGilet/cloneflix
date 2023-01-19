@@ -11,7 +11,7 @@ const DropDown = ({ list, type }) => {
     return (
         <Menu as="div" className="relative inline-block text-left">
             <div>
-                <Menu.Button className="inline-flex w-full justify-center  border border-gray-300 bg-[#141414] px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-[#141414]  ">
+                <Menu.Button className="inline-flex w-full justify-center border border-gray-300 bg-[#141414] px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-[#141414]  ">
                     Genres
                     <ChevronDownIcon className="-mr-1 ml-2 h-5 w-5" aria-hidden="true" />
                 </Menu.Button>
