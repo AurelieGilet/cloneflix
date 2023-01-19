@@ -8,11 +8,32 @@ const Modal = ({ element }) => {
     const dispatch = useDispatch();
     const [video, setVideo] = useState([]);
 
+    const [favToggle, setFavToggle] = useState(false);
+    let image = element.backdrop_path ? `https://image.tmdb.org/t/p/w1280${element.backdrop_path} ` : defaultImg;
+
     const type = useSelector((state) => state.Modal.type);
     const moviesGenres = useSelector((state) => state.API.moviesGenres);
     const seriesGenres = useSelector((state) => state.API.seriesGenres);
 
-    const categorie = type === "films" ? "movie" : "tv";
+    const categorie = type === "films" || type === "movie" ? "movie" : "tv";
+
+    const handleClick = () => {
+        if (!localStorage.getItem("" + categorie + "")) {
+            localStorage.setItem("" + categorie + "", JSON.stringify([]));
+        }
+        let filmsStorage = JSON.parse(localStorage.getItem("" + categorie + ""));
+        const arr = filmsStorage.filter((elements) => elements.id === element.id);
+
+        if (!arr[0]) {
+            filmsStorage.push(element);
+            localStorage.setItem("" + categorie + "", JSON.stringify(filmsStorage));
+            setFavToggle(true);
+        } else {
+            const newArray = filmsStorage.filter((element) => element.id !== arr[0].id);
+            localStorage.setItem("" + categorie + "", JSON.stringify(newArray));
+            setFavToggle(false);
+        }
+    };
 
     let image = element.backdrop_path
         ? `https://image.tmdb.org/t/p/w1280${element.backdrop_path} `
@@ -47,6 +68,15 @@ const Modal = ({ element }) => {
         )
             .then((res) => res.json())
             .then((res) => setVideo(res.results));
+
+        if (!localStorage.getItem("" + categorie + "")) {
+            localStorage.setItem("" + categorie + "", JSON.stringify([]));
+        }
+
+        let filmsStorage = JSON.parse(localStorage.getItem("" + categorie + ""));
+        const arr = filmsStorage.filter((elements) => elements.id === element.id);
+
+        arr[0] ? setFavToggle(true) : setFavToggle(false);
     }, []);
 
     const formatDate = (date) => {
@@ -84,6 +114,7 @@ const Modal = ({ element }) => {
                     <img className="rounded-md" src={image} alt={element.title || element.name} />
                 )}
 
+
                 <div className="text-white p-5 pb-0">
                     <div className="flex justify-between">
                         <h2 className="text-2xl">{element.title || element.name}</h2>
@@ -105,7 +136,10 @@ const Modal = ({ element }) => {
                                 {genre[0].name}
                             </span>
                         ))}
+                        <button onClick={handleClick}>{favToggle ? "Supprimer" : "Ajouter"} à mes favoris</button>
                     </div>
+                  
+
                 </div>
                 <div
                     className="inline-block float-right p-5 text-white font-large text-xl leading-none uppercase cursor-pointer rounded"

@@ -12,6 +12,7 @@ const ApiSlice = createSlice({
         moviesPerGenres: [],
         seriesPerGenres: [],
         moviesUpcoming: [],
+        search: [],
     },
     reducers: {
         setMoviesTopRated: (state, action) => {
@@ -41,6 +42,13 @@ const ApiSlice = createSlice({
         setMoviesUpcoming: (state, action) => {
             state.moviesUpcoming = action.payload.upcoming;
         },
+        setSearchBar: (state, action) => {
+            action.payload.results.map((object) => Object.assign(object, { type: action.payload.type }));
+            state.search = [...state.search, ...action.payload.results];
+        },
+        emptySearchBar: (state) => {
+            state.search = [];
+        },
     },
 });
 
@@ -52,5 +60,7 @@ export const {
     setMoviesPerGenres,
     setSeriesPerGenres,
     setMoviesUpcoming,
+    setSearchBar,
+    emptySearchBar,
 } = ApiSlice.actions;
 export default ApiSlice.reducer;

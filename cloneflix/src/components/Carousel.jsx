@@ -12,7 +12,7 @@ const Carousel = ({ list, title, type, customClasses}) => {
         dots: false,
         infinite: true,
         speed: 500,
-        slidesToShow: 4,
+        adaptiveHeight: true,
         slidesToScroll: 3,
         responsive: [
             {
@@ -33,9 +33,11 @@ const Carousel = ({ list, title, type, customClasses}) => {
     };
 
     return (
+
         <div className="flex flex-col items-center my-5">
             <h2 className="self-start text-4xl font-bold text-white m-4">{title}</h2>
-            <Slider {...settings} className="w-11/12">
+{list.length && (
+            <Slider {...settings} slidesToShow={list.length < 4 ? list.length : 4} className="w-11/12">
                 {list.map((element) => (
                     <Suspense key={element.id} fallback={<FallbackCard />}>
                         <Card
@@ -45,8 +47,10 @@ const Carousel = ({ list, title, type, customClasses}) => {
                             customClasses={customClasses}
                         />
                     </Suspense>
-                ))}
+                 ))}
             </Slider>
+          )}
+
         </div>
     );
 };
