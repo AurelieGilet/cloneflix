@@ -14,7 +14,7 @@ const Carousel = ({ list, title }) => {
     const [toggleModal, setToggleModal] = useState(false);
     const element = useSelector((state) => state.Modal.element);
 
-    const handleClick = (element) => {
+    const handleClick =, customClasses (element) => {
         setToggleModal(!toggleModal);
         // setElement(element);
         console.log(element);
@@ -25,14 +25,35 @@ const Carousel = ({ list, title }) => {
         speed: 500,
         slidesToShow: 4,
         slidesToScroll: 3,
+        responsive: [
+            {
+                breakpoint: 769,
+                settings: {
+                    slidesToShow: 3,
+                    slidesToScroll: 2,
+                },
+            },
+            {
+                breakpoint: 425,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                },
+            },
+        ],
     };
     return (
-        <div>
-            <h2 className="text-4xl font-bold text-white">{title}</h2>
-            <Slider {...settings}>
+        <div className="flex flex-col items-center my-5">
+            <h2 className="self-start text-4xl font-bold text-white m-4">{title}</h2>
+            <Slider {...settings} className="w-11/12">
                 {list.map((element) => (
                     <Suspense key={element.id} fallback={<FallbackCard />}>
-                        <Card element={element} key={element.id} />
+                        <Card
+                            element={element}
+                            type={type}
+                            key={element.id}
+                            customClasses={customClasses}
+                        />
                     </Suspense>
                 ))}
             </Slider>
