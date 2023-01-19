@@ -9,7 +9,7 @@ function classNames(...classes) {
 
 const DropDown = ({ list, type }) => {
     return (
-        <Menu as="div" className="relative inline-block text-left">
+        <Menu as="div" className="relative inline-block text-left mt-2">
             <div>
                 <Menu.Button className="inline-flex w-full justify-center border border-gray-300 bg-[#141414] px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-[#141414]  ">
                     Genres

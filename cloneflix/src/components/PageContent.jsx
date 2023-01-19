@@ -14,7 +14,9 @@ const PageContent = ({ type, genreParam }) => {
 
     const element = useSelector((state) => state.Modal.element);
 
-    element ? (document.body.style.overflow = "hidden") : (document.body.style.overflow = "visible");
+    element
+        ? (document.body.style.overflow = "hidden")
+        : (document.body.style.overflow = "visible");
 
     let genresList = [];
     let requestType;
@@ -60,10 +62,18 @@ const PageContent = ({ type, genreParam }) => {
         <section>
             {element && <Modal element={element} />}
             {genre[0]
-                ? perGenreList[0] && <List list={perGenreList} type={type} />
+                ? perGenreList[0] && (
+                    <List list={perGenreList} type={type} customClasses={"genre-card"} />
+                )
                 : genresList.map((genre) => (
-                      <Carousel key={genre.id} list={genre.arr} type={type} title={genre.name} />
-                  ))}
+                    <Carousel
+                        key={genre.id}
+                        list={genre.arr}
+                        type={type}
+                        title={genre.name}
+                        customClasses={"slider-card"}
+                    />
+                ))}
         </section>
     );
 };

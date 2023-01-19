@@ -48,7 +48,7 @@ Pour faciliter le développement de votre application vous utiliserez GIT. Crée
 
 Structure des branches git :
 
-Origin
+- Origin
     - Main
     - Dev
         - michel

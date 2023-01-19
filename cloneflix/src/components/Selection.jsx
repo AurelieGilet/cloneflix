@@ -23,17 +23,24 @@ const Selection = ({ movies, type }) => {
     };
 
     return (
-        <Slider
-            {...settings}
-            autoplay={!isOpen}
-            beforeChange={(currentSlide, nextSlide) => {
-                setCurrentIndex(nextSlide);
-            }}
-        >
-            {movies.map((movie) => (
-                <Card key={movie.id} type={type} element={movies[currentIndex]} />
-            ))}
-        </Slider>
+        <div className="my-5">
+            <Slider
+                {...settings}
+                autoplay={!isOpen}
+                beforeChange={(currentSlide, nextSlide) => {
+                    setCurrentIndex(nextSlide);
+                }}
+            >
+                {movies.map((movie) => (
+                    <Card
+                        key={movie.id}
+                        type={type}
+                        element={movies[currentIndex]}
+                        customClasses={"selection-card"}
+                    />
+                ))}
+            </Slider>
+        </div>
     );
 };
 
