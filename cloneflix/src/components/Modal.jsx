@@ -39,7 +39,9 @@ const Modal = ({ element }) => {
 
     useEffect(() => {
         fetch(
-            "https://api.themoviedb.org/3/movie/" +
+            "https://api.themoviedb.org/3/" +
+                categorie +
+                "/" +
                 element.id +
                 "/videos?api_key=d447506c6ccd7a520d5dc70bf8bf7614&language=fr-fr"
         )

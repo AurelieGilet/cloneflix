@@ -1,6 +1,5 @@
 import { useSelector } from "react-redux";
-import { NavLink } from "react-router-dom";
-import DropDown from './DropDown'
+import DropDown from "./DropDown";
 
 const Header = ({ type, genre }) => {
     const seriesGenres = useSelector((state) => state.API.seriesGenres);

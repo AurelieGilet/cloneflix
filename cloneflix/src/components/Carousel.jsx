@@ -2,23 +2,12 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import FallbackCard from "./FallbackCard";
-import Modal from "./Modal";
-import { useState } from "react";
 
 import { Suspense, lazy } from "react";
-import { useSelector } from "react-redux";
 
 const Card = lazy(() => import("./Card"));
 
-const Carousel = ({ list, title }) => {
-    const [toggleModal, setToggleModal] = useState(false);
-    const element = useSelector((state) => state.Modal.element);
-
-    const handleClick =, customClasses (element) => {
-        setToggleModal(!toggleModal);
-        // setElement(element);
-        console.log(element);
-    };
+const Carousel = ({ list, title, type, customClasses}) => {
     const settings = {
         dots: false,
         infinite: true,
@@ -42,6 +31,7 @@ const Carousel = ({ list, title }) => {
             },
         ],
     };
+
     return (
         <div className="flex flex-col items-center my-5">
             <h2 className="self-start text-4xl font-bold text-white m-4">{title}</h2>
@@ -57,7 +47,6 @@ const Carousel = ({ list, title }) => {
                     </Suspense>
                 ))}
             </Slider>
-            {element && <Modal element={element} />}
         </div>
     );
 };

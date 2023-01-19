@@ -2,7 +2,7 @@ import defaultImg from "../assets/default-image.jpg";
 import { useDispatch } from "react-redux";
 import { setModalElement } from "../store/slices/ModalSlice";
 
-const Card = ({ element, customClasses }) => {
+const Card = ({ element, type, customClasses }) => {
     const dispatch = useDispatch();
     let image = element.backdrop_path
         ? `https://image.tmdb.org/t/p/w1280${element.backdrop_path} `
