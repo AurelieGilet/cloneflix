@@ -3,7 +3,6 @@ import Carousel from "./Carousel";
 import Modal from "./Modal";
 import { useEffect, useState } from "react";
 import List from "./List";
-import { usePageContentFetch } from "./usePageContentFetch";
 
 const PageContent = ({ type, genreParam }) => {
     const moviesPerGenres = useSelector((state) => state.API.moviesPerGenres);
@@ -20,10 +19,7 @@ const PageContent = ({ type, genreParam }) => {
     let genresList = [];
     let requestType;
 
-    // const [perGenreList] = usePageContentFetch({ genre, requestType, genreParam });
-
     useEffect(() => {
-        console.log(genre[0]);
         setPerGenreList([]);
         if (genre[0]) {
             for (let i = 1; i < 3; i++) {

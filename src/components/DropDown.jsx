@@ -37,7 +37,7 @@ const DropDown = ({ list, type }) => {
                                             "block px-4 py-2 text-sm"
                                         )}
                                     >
-                                        <NavLink to={"/" + type + "/" + element.name}>
+                                        <NavLink style={{ display: "block" }} to={"/" + type + "/" + element.name}>
                                             {element.name}
                                         </NavLink>
                                     </li>

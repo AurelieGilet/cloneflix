@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import { emptySearchBar } from "../store/slices/ApiSlice";
 import { useDispatch } from "react-redux";
 import { SearchBarFetch } from "./SearchBarFetch";
@@ -10,14 +10,16 @@ const SearchBar = () => {
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
+    const route = useLocation();
     SearchBarFetch({ target: search, fetchType: "movie" });
     SearchBarFetch({ target: search, fetchType: "tv" });
 
     const handleChange = (e) => {
-        if (e.target.value === "") {
+        if (e.target.value.trim() === "") {
             setSearch(e.target.value.trim());
-            setIsFirstSearch(true);
-            navigate(-1);
+            // setIsFirstSearch(true);
+
+            // navigate(-1);
             return;
         }
 
@@ -30,6 +32,13 @@ const SearchBar = () => {
         dispatch(emptySearchBar());
     };
 
+    useEffect(() => {
+        if (route.pathname !== "/search") {
+            setSearch("");
+            setIsFirstSearch(true);
+        }
+    }, [route]);
+
     return (
         <div className="searchbar">
             <input
@@ -39,6 +48,7 @@ const SearchBar = () => {
                 placeholder="Titres, personnes"
                 value={search}
                 onChange={handleChange}
+                onFocus={() => setSearch("")}
             />
         </div>
     );
