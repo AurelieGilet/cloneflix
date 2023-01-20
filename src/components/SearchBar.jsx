@@ -1,7 +1,8 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { setSearchBar, emptySearchBar } from "../store/slices/ApiSlice";
+import { useState, useEffect } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
+import { emptySearchBar } from "../store/slices/ApiSlice";
 import { useDispatch } from "react-redux";
+import { SearchBarFetch } from "./SearchBarFetch";
 
 const SearchBar = () => {
     const [search, setSearch] = useState("");
@@ -9,12 +10,16 @@ const SearchBar = () => {
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
+    const route = useLocation();
+    SearchBarFetch({ target: search, fetchType: "movie" });
+    SearchBarFetch({ target: search, fetchType: "tv" });
 
     const handleChange = (e) => {
-        if (e.target.value === "") {
+        if (e.target.value.trim() === "") {
             setSearch(e.target.value.trim());
-            setIsFirstSearch(true);
-            navigate(-1);
+            // setIsFirstSearch(true);
+
+            // navigate(-1);
             return;
         }
 
@@ -22,29 +27,17 @@ const SearchBar = () => {
             navigate("/search");
             setIsFirstSearch(false);
         }
+        setSearch(e.target.value);
 
         dispatch(emptySearchBar());
-
-        setSearch(e.target.value);
-        fetch(
-            "https://api.themoviedb.org/3/search/movie?api_key=d447506c6ccd7a520d5dc70bf8bf7614&language=fr-fr&query=" +
-                e.target.value +
-                "&page=1&include_adult=false"
-        )
-            .then((res) => res.json())
-            .then((res) => {
-                dispatch(setSearchBar({ results: res.results, type: "movie" }));
-            });
-        fetch(
-            "https://api.themoviedb.org/3/search/tv?api_key=d447506c6ccd7a520d5dc70bf8bf7614&language=fr-fr&query=" +
-                e.target.value +
-                "&page=1&include_adult=false"
-        )
-            .then((res) => res.json())
-            .then((res) => {
-                dispatch(setSearchBar({ results: res.results, type: "tv" }));
-            });
     };
+
+    useEffect(() => {
+        if (route.pathname !== "/search") {
+            setSearch("");
+            setIsFirstSearch(true);
+        }
+    }, [route]);
 
     return (
         <div className="searchbar">
@@ -55,6 +48,7 @@ const SearchBar = () => {
                 placeholder="Titres, personnes"
                 value={search}
                 onChange={handleChange}
+                onFocus={() => setSearch("")}
             />
         </div>
     );
