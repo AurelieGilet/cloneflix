@@ -3,6 +3,7 @@ import Carousel from "./Carousel";
 import Modal from "./Modal";
 import { useEffect, useState } from "react";
 import List from "./List";
+import { usePageContentFetch } from "./usePageContentFetch";
 
 const PageContent = ({ type, genreParam }) => {
     const moviesPerGenres = useSelector((state) => state.API.moviesPerGenres);
@@ -14,14 +15,15 @@ const PageContent = ({ type, genreParam }) => {
 
     const element = useSelector((state) => state.Modal.element);
 
-    element
-        ? (document.body.style.overflow = "hidden")
-        : (document.body.style.overflow = "visible");
+    element ? (document.body.style.overflow = "hidden") : (document.body.style.overflow = "visible");
 
     let genresList = [];
     let requestType;
 
+    // const [perGenreList] = usePageContentFetch({ genre, requestType, genreParam });
+
     useEffect(() => {
+        console.log(genre[0]);
         setPerGenreList([]);
         if (genre[0]) {
             for (let i = 1; i < 3; i++) {
@@ -62,18 +64,16 @@ const PageContent = ({ type, genreParam }) => {
         <section>
             {element && <Modal element={element} />}
             {genre[0]
-                ? perGenreList[0] && (
-                    <List list={perGenreList} type={type} customClasses={"genre-card"} />
-                )
+                ? perGenreList[0] && <List list={perGenreList} type={type} customClasses={"genre-card"} />
                 : genresList.map((genre) => (
-                    <Carousel
-                        key={genre.id}
-                        list={genre.arr}
-                        type={type}
-                        title={genre.name}
-                        customClasses={"slider-card"}
-                    />
-                ))}
+                      <Carousel
+                          key={genre.id}
+                          list={genre.arr}
+                          type={type}
+                          title={genre.name}
+                          customClasses={"slider-card"}
+                      />
+                  ))}
         </section>
     );
 };

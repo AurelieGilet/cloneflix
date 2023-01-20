@@ -2,12 +2,11 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import FallbackCard from "./FallbackCard";
-
 import { Suspense, lazy } from "react";
 
 const Card = lazy(() => import("./Card"));
 
-const Carousel = ({ list, title, type, customClasses}) => {
+const Carousel = ({ list, title, type, customClasses }) => {
     const settings = {
         dots: false,
         infinite: true,
@@ -33,24 +32,17 @@ const Carousel = ({ list, title, type, customClasses}) => {
     };
 
     return (
-
         <div className="flex flex-col items-center my-5">
             <h2 className="self-start text-4xl font-bold text-white m-4">{title}</h2>
-{list.length && (
-            <Slider {...settings} slidesToShow={list.length < 4 ? list.length : 4} className="w-11/12">
-                {list.map((element) => (
-                    <Suspense key={element.id} fallback={<FallbackCard />}>
-                        <Card
-                            element={element}
-                            type={type}
-                            key={element.id}
-                            customClasses={customClasses}
-                        />
-                    </Suspense>
-                 ))}
-            </Slider>
-          )}
-
+            {list.length && (
+                <Slider {...settings} slidesToShow={list.length < 4 ? list.length : 4} className="w-11/12">
+                    {list.map((element) => (
+                        <Suspense key={element.id} fallback={<FallbackCard />}>
+                            <Card element={element} type={type} key={element.id} customClasses={customClasses} />
+                        </Suspense>
+                    ))}
+                </Slider>
+            )}
         </div>
     );
 };
