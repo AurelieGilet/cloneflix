@@ -47,17 +47,16 @@ const SearchBar = () => {
     };
 
     return (
-        <>
-            <label htmlFor="searchBar"></label>
+        <div className="searchbar">
             <input
-                className="text-black"
+                className="border border-gray-300 bg-[#141414] text-white focus:border-red-800 focus:outline-none block w-full p-2.5"
                 id="searchBar"
                 type="text"
                 placeholder="Titres, personnes"
                 value={search}
                 onChange={handleChange}
             />
-        </>
+        </div>
     );
 };
 

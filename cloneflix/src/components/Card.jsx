@@ -13,7 +13,7 @@ const Card = ({ element, type, customClasses }) => {
             onClick={() =>
                 dispatch(setModalElement({ element: element, type: type, isOpen: true }))
             }
-            className={customClasses +" flex relative justify-center items-end mx-1"}
+            className={customClasses +" flex relative justify-center items-end mx-1 cursor-pointer"}
         >
             <h2 className="absolute text-white text-center font-bold">
                 {element.title || element.name}

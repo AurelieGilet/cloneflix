@@ -17,10 +17,10 @@ const Header = ({ type, genre }) => {
             break;
     }
     return (
-        <header className="flex items-center mb-4 sticky top-[3.75rem] p-4 z-20 bg-[#141414]">
+        <header className="cat-header flex items-center flex-wrap mb-4 sticky top-[4.875rem] p-4 z-20 bg-[#141414]">
             <h1 className="text-white uppercase mr-6 text-5xl">{type}</h1>
             <DropDown list={list} type={type} />
-            {genre && <h2 className="text-white uppercase ml-6 mt-2 text-2xl">{genre}</h2>}
+            {genre && <h2 className="text-white uppercase mt-2 text-2xl">{genre}</h2>}
         </header>
     );
 };
