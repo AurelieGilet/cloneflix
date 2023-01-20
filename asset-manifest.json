@@ -1,21 +1,21 @@
 {
   "files": {
-    "main.css": "/static/css/main.62526d7c.css",
-    "main.js": "/static/js/main.236f3e0b.js",
-    "static/js/787.62947184.chunk.js": "/static/js/787.62947184.chunk.js",
-    "static/media/default-image.jpg": "/static/media/default-image.de9c39e3b1551b4bf50c.jpg",
-    "static/media/cloneflix-logo.png": "/static/media/cloneflix-logo.9bdd76053c61460a7141.png",
-    "static/media/slick.svg": "/static/media/slick.2630a3e3eab21c607e21.svg",
-    "static/media/slick.eot": "/static/media/slick.a4e97f5a2a64f0ab1323.eot",
-    "static/media/slick.ttf": "/static/media/slick.c94f7671dcc99dce43e2.ttf",
-    "static/media/slick.woff": "/static/media/slick.295183786cd8a1389865.woff",
-    "index.html": "/index.html",
-    "main.62526d7c.css.map": "/static/css/main.62526d7c.css.map",
-    "main.236f3e0b.js.map": "/static/js/main.236f3e0b.js.map",
-    "787.62947184.chunk.js.map": "/static/js/787.62947184.chunk.js.map"
+    "main.css": "/AurelieGilet/cloneflix/static/css/main.f8bcdeac.css",
+    "main.js": "/AurelieGilet/cloneflix/static/js/main.4dacbd80.js",
+    "static/js/787.62947184.chunk.js": "/AurelieGilet/cloneflix/static/js/787.62947184.chunk.js",
+    "static/media/default-image.jpg": "/AurelieGilet/cloneflix/static/media/default-image.de9c39e3b1551b4bf50c.jpg",
+    "static/media/cloneflix-logo.png": "/AurelieGilet/cloneflix/static/media/cloneflix-logo.9bdd76053c61460a7141.png",
+    "static/media/slick.svg": "/AurelieGilet/cloneflix/static/media/slick.2630a3e3eab21c607e21.svg",
+    "static/media/slick.eot": "/AurelieGilet/cloneflix/static/media/slick.a4e97f5a2a64f0ab1323.eot",
+    "static/media/slick.ttf": "/AurelieGilet/cloneflix/static/media/slick.c94f7671dcc99dce43e2.ttf",
+    "static/media/slick.woff": "/AurelieGilet/cloneflix/static/media/slick.295183786cd8a1389865.woff",
+    "index.html": "/AurelieGilet/cloneflix/index.html",
+    "main.f8bcdeac.css.map": "/AurelieGilet/cloneflix/static/css/main.f8bcdeac.css.map",
+    "main.4dacbd80.js.map": "/AurelieGilet/cloneflix/static/js/main.4dacbd80.js.map",
+    "787.62947184.chunk.js.map": "/AurelieGilet/cloneflix/static/js/787.62947184.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.62526d7c.css",
-    "static/js/main.236f3e0b.js"
+    "static/css/main.f8bcdeac.css",
+    "static/js/main.4dacbd80.js"
   ]
 }
