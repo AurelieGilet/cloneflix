@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/cloneflix/static/css/main.17a97c5b.css",
-    "main.js": "/cloneflix/static/js/main.1d6018ab.js",
+    "main.js": "/cloneflix/static/js/main.85bc36f1.js",
     "static/js/787.62947184.chunk.js": "/cloneflix/static/js/787.62947184.chunk.js",
     "static/media/default-image.jpg": "/cloneflix/static/media/default-image.de9c39e3b1551b4bf50c.jpg",
     "static/media/cloneflix-logo.png": "/cloneflix/static/media/cloneflix-logo.9bdd76053c61460a7141.png",
@@ -11,11 +11,11 @@
     "static/media/slick.woff": "/cloneflix/static/media/slick.295183786cd8a1389865.woff",
     "index.html": "/cloneflix/index.html",
     "main.17a97c5b.css.map": "/cloneflix/static/css/main.17a97c5b.css.map",
-    "main.1d6018ab.js.map": "/cloneflix/static/js/main.1d6018ab.js.map",
+    "main.85bc36f1.js.map": "/cloneflix/static/js/main.85bc36f1.js.map",
     "787.62947184.chunk.js.map": "/cloneflix/static/js/787.62947184.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.17a97c5b.css",
-    "static/js/main.1d6018ab.js"
+    "static/js/main.85bc36f1.js"
   ]
 }
