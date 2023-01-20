@@ -1,21 +1,21 @@
 {
   "files": {
-    "main.css": "/cloneflix/static/css/main.17a97c5b.css",
-    "main.js": "/cloneflix/static/js/main.1d6018ab.js",
-    "static/js/787.62947184.chunk.js": "/cloneflix/static/js/787.62947184.chunk.js",
-    "static/media/default-image.jpg": "/cloneflix/static/media/default-image.de9c39e3b1551b4bf50c.jpg",
-    "static/media/cloneflix-logo.png": "/cloneflix/static/media/cloneflix-logo.9bdd76053c61460a7141.png",
-    "static/media/slick.svg": "/cloneflix/static/media/slick.2630a3e3eab21c607e21.svg",
-    "static/media/slick.eot": "/cloneflix/static/media/slick.a4e97f5a2a64f0ab1323.eot",
-    "static/media/slick.ttf": "/cloneflix/static/media/slick.c94f7671dcc99dce43e2.ttf",
-    "static/media/slick.woff": "/cloneflix/static/media/slick.295183786cd8a1389865.woff",
-    "index.html": "/cloneflix/index.html",
-    "main.17a97c5b.css.map": "/cloneflix/static/css/main.17a97c5b.css.map",
-    "main.1d6018ab.js.map": "/cloneflix/static/js/main.1d6018ab.js.map",
-    "787.62947184.chunk.js.map": "/cloneflix/static/js/787.62947184.chunk.js.map"
+    "main.css": "/static/css/main.62526d7c.css",
+    "main.js": "/static/js/main.236f3e0b.js",
+    "static/js/787.62947184.chunk.js": "/static/js/787.62947184.chunk.js",
+    "static/media/default-image.jpg": "/static/media/default-image.de9c39e3b1551b4bf50c.jpg",
+    "static/media/cloneflix-logo.png": "/static/media/cloneflix-logo.9bdd76053c61460a7141.png",
+    "static/media/slick.svg": "/static/media/slick.2630a3e3eab21c607e21.svg",
+    "static/media/slick.eot": "/static/media/slick.a4e97f5a2a64f0ab1323.eot",
+    "static/media/slick.ttf": "/static/media/slick.c94f7671dcc99dce43e2.ttf",
+    "static/media/slick.woff": "/static/media/slick.295183786cd8a1389865.woff",
+    "index.html": "/index.html",
+    "main.62526d7c.css.map": "/static/css/main.62526d7c.css.map",
+    "main.236f3e0b.js.map": "/static/js/main.236f3e0b.js.map",
+    "787.62947184.chunk.js.map": "/static/js/787.62947184.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.17a97c5b.css",
-    "static/js/main.1d6018ab.js"
+    "static/css/main.62526d7c.css",
+    "static/js/main.236f3e0b.js"
   ]
 }
