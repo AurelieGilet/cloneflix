@@ -18,7 +18,6 @@ const Api = () => {
     const shuffle = (array) => {
         return array.sort(() => Math.random() - 0.5);
     };
-    // console.log(MovieGenre);
 
     useEffect(() => {
         fetch(`https://api.themoviedb.org/3/movie/top_rated?api_key=d447506c6ccd7a520d5dc70bf8bf7614&language=fr-fr`)
@@ -57,6 +56,7 @@ const Api = () => {
                 );
         });
     }, [MovieGenre]);
+
     useEffect(() => {
         SerieGenre.map((genre) => {
             fetch(

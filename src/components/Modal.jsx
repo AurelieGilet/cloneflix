@@ -1,23 +1,24 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setModalElement } from "../store/slices/ModalSlice";
 import defaultImg from "../assets/default-image.jpg";
 import { Suspense } from "react";
+import { ModalFetch } from "./useModalFetch";
 
 const Modal = ({ element }) => {
     const dispatch = useDispatch();
     const [video, setVideo] = useState([]);
 
     const [favToggle, setFavToggle] = useState(false);
-    let image = element.backdrop_path
-        ? `https://image.tmdb.org/t/p/w1280${element.backdrop_path} `
-        : defaultImg;
+    let image = element.backdrop_path ? `https://image.tmdb.org/t/p/w1280${element.backdrop_path} ` : defaultImg;
 
     const type = useSelector((state) => state.Modal.type);
     const moviesGenres = useSelector((state) => state.API.moviesGenres);
     const seriesGenres = useSelector((state) => state.API.seriesGenres);
 
     const categorie = type === "films" || type === "movie" ? "movie" : "tv";
+
+    ModalFetch({ categorie, element, setVideo, setFavToggle });
 
     const handleClick = () => {
         if (!localStorage.getItem("" + categorie + "")) {
@@ -39,7 +40,6 @@ const Modal = ({ element }) => {
 
     let elementGenresIds = element.genre_ids;
     let elementGenres = [];
-    console.log(type);
 
     switch (type) {
         case "films":
@@ -59,27 +59,6 @@ const Modal = ({ element }) => {
             break;
     }
 
-    useEffect(() => {
-        fetch(
-            "https://api.themoviedb.org/3/" +
-                categorie +
-                "/" +
-                element.id +
-                "/videos?api_key=d447506c6ccd7a520d5dc70bf8bf7614&language=fr-fr"
-        )
-            .then((res) => res.json())
-            .then((res) => setVideo(res.results));
-
-        if (!localStorage.getItem("" + categorie + "")) {
-            localStorage.setItem("" + categorie + "", JSON.stringify([]));
-        }
-
-        let filmsStorage = JSON.parse(localStorage.getItem("" + categorie + ""));
-        const arr = filmsStorage.filter((elements) => elements.id === element.id);
-
-        arr[0] ? setFavToggle(true) : setFavToggle(false);
-    }, []);
-
     const formatDate = (date) => {
         let dateArr = date.split("-");
         dateArr.push(dateArr.shift());
@@ -91,9 +70,7 @@ const Modal = ({ element }) => {
         <>
             <div
                 className="fixed top-0 left-0 w-screen h-screen right-0 z-30 bg-black bg-opacity-80"
-                onClick={() =>
-                    dispatch(setModalElement({ element: null, type: null, isOpen: false }))
-                }
+                onClick={() => dispatch(setModalElement({ element: null, type: null, isOpen: false }))}
             ></div>
 
             <div className="bg-[#141414] w-3/5 -translate-y-2/4 translate-x-2/4 fixed top-2/4 right-2/4 z-50">
@@ -124,9 +101,7 @@ const Modal = ({ element }) => {
                     </div>
                     <p className="my-2">
                         Date de sortie :{" "}
-                        {element.release_date
-                            ? formatDate(element.release_date)
-                            : formatDate(element.first_air_date)}
+                        {element.release_date ? formatDate(element.release_date) : formatDate(element.first_air_date)}
                     </p>
                     <p className="my-2">{element.overview}</p>
                     <div className="flex flex-wrap my-2">
@@ -139,17 +114,12 @@ const Modal = ({ element }) => {
                     </div>
                 </div>
                 <div className="flex justify-between items-center">
-                    <button
-                        className="ml-5 p-2 text-center font-bold bg-red-800 text-white"
-                        onClick={handleClick}
-                    >
+                    <button className="ml-5 p-2 text-center font-bold bg-red-800 text-white" onClick={handleClick}>
                         {favToggle ? "Supprimer de" : "Ajouter à"} mes favoris
                     </button>
                     <div
                         className="inline-block float-right p-5 text-white font-large text-2xl leading-none uppercase cursor-pointer rounded"
-                        onClick={() =>
-                            dispatch(setModalElement({ element: null, type: null, isOpen: false }))
-                        }
+                        onClick={() => dispatch(setModalElement({ element: null, type: null, isOpen: false }))}
                     >
                         X
                     </div>
