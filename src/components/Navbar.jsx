@@ -4,9 +4,9 @@ import SearchBar from "./SearchBar";
 
 const Navbar = () => {
     return (
-        <header className="sticky top-0 bg-black text-white py-4 opacity-90 z-10">
-            <nav className="flex justify-between px-6 flex-row items-center">
-                <ul className="grid grid-flow-col gap-8 md:ml-5 mr-auto auto-rows-auto ">
+        <header className="sticky top-0 bg-black text-white py-4 z-10">
+            <nav className="flex justify-between px-6 flex-row flex-wrap items-center">
+                <ul className="grid grid-flow-col gap-8 md:ml-5 mr-8 auto-rows-auto ">
                     <li>
                         <NavLink to={"/"}>
                             <img className="w-24" src={cloneFlixLogo} alt="Logo Cloneflix" />

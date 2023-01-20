@@ -9,7 +9,7 @@ function classNames(...classes) {
 
 const DropDown = ({ list, type }) => {
     return (
-        <Menu as="div" className="relative inline-block text-left mt-2">
+        <Menu as="div" className="relative inline-block text-left mt-2 mr-6">
             <div>
                 <Menu.Button className="inline-flex w-full justify-center border border-gray-300 bg-[#141414] px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-[#141414]  ">
                     Genres
@@ -37,7 +37,9 @@ const DropDown = ({ list, type }) => {
                                             "block px-4 py-2 text-sm"
                                         )}
                                     >
-                                        <NavLink to={"/" + type + "/" + element.name}>{element.name}</NavLink>
+                                        <NavLink to={"/" + type + "/" + element.name}>
+                                            {element.name}
+                                        </NavLink>
                                     </li>
                                 )}
                             </Menu.Item>

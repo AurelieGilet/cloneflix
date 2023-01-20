@@ -4,6 +4,7 @@
 
 body {
     background-color: #141414;
+    min-width: 425px;
 }
 
 .selection-card > h2 {
@@ -40,6 +41,21 @@ body {
     }
 }
 
+@media (max-width: 500px) {
+    nav > ul {
+        margin-right: 0 !important;
+    }
+}
+
+@media (max-width: 690px) {
+    .searchbar {
+        padding-top: 1rem;
+    }
+    .cat-header {
+        top: 7.375rem !important;
+    }
+}
+
 @media (min-width: 1025px) {
     .selection-card > h2 {
         font-size: 3rem;
@@ -49,4 +65,22 @@ body {
         font-size: 1.5rem;
         line-height: 2rem;
     }
+}
+
+/* SLIDER */
+
+.slick-prev, .slick-next {
+    width: 48px !important;
+    height: 48px !important;
+}
+/* next arrow */
+.slick-next:before {
+    content: url("./assets/chevron-right.png") !important;
+    /* opacity: .55 !important; */
+}
+/* prev arrow */
+.slick-prev:before {
+    content: url("./assets/chevron-left.png") !important;
+    /* opacity: .55 !important; */
+
 }

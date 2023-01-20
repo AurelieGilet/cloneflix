@@ -35,7 +35,7 @@ const Carousel = ({ list, title, type, customClasses }) => {
         <div className="flex flex-col items-center my-5">
             <h2 className="self-start text-4xl font-bold text-white m-4">{title}</h2>
             {list.length && (
-                <Slider {...settings} slidesToShow={list.length < 4 ? list.length : 4} className="w-11/12">
+                <Slider {...settings} slidesToShow={list.length < 4 ? list.length : 4} className="w-11/12 px-5">
                     {list.map((element) => (
                         <Suspense key={element.id} fallback={<FallbackCard />}>
                             <Card element={element} type={type} key={element.id} customClasses={customClasses} />

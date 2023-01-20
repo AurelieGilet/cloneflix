@@ -10,7 +10,7 @@ const Card = ({ element, type, customClasses }) => {
     return (
         <div
             onClick={() => dispatch(setModalElement({ element: element, type: type, isOpen: true }))}
-            className={customClasses + " flex relative justify-center items-end mx-1"}
+            className={customClasses + " flex relative justify-center items-end mx-1 cursor-pointer"}
         >
             <h2 className="absolute text-white text-center font-bold">{element.title || element.name}</h2>
             <img className="rounded-md" src={image} alt={element.title || element.name} />
