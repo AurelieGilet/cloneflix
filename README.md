@@ -4,7 +4,7 @@ PROJET : Cloneflix
 
 Réalisé en peer-coding lors de la formation React à la 3W Academy :
 * [Aurélie Gilet](https://github.com/AurelieGilet)
-* [Gauthier Chapon Gilet](https://github.com/gautchap)
+* [Gauthier Chapon](https://github.com/gautchap)
 * [Christopher Gomas](https://github.com/Dragunfight)
 
 ## Notions :
